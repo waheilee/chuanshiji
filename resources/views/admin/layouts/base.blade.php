@@ -32,6 +32,7 @@
 <script src="{{ asset('distAdmin/js/scripts.js') }}"></script>
 <script src="{{ asset('distAdmin/js/custom.js') }}"></script>
 <script src="{{ asset('distAdmin/js/demo.js') }}"></script>
+
 @yield('admin-js')
 </body>
 </html>

@@ -28,7 +28,7 @@
                                 <div class="col-sm-12 col-md-7">
                                     <div class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
                                         <div class="selectric-hide-select">
-                                            <select class="form-control selectric" tabindex="-1">
+                                            <select class="form-control selectric" tabindex="-1" name="type">
                                                 <option>Tech</option>
                                                 <option>News</option>
                                                 <option>Political</option>
@@ -59,6 +59,7 @@
     </section>
 @endsection
 @section('admin-js')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script id="ueditor"></script>
     <script>
         var ue=UE.getEditor("ueditor");
@@ -78,9 +79,18 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 },
-//                success: function(data){
-//                    console.log(data.status);
-//                }
+                statusCode: {
+                    404:function (){
+
+                    },
+                    200:function (){
+                        swal("Good job!", "You clicked the button!", "success");
+                    }
+                },
+               // success: function(data){
+               //     console.log(status);
+               //     toastr.success('This awesome plugin is made by toastr', 'Hello, world!');
+               // }
 //                error: function(xhr, type){
 //                    alert('Ajax error!')
 //                }

@@ -28,8 +28,10 @@ class ProjectController extends Controller
 
     public function update(Request $request)
     {
-        dd($request->post());
-        return view('admin.project.create');
+
+        $res = $request->post();
+       return response()->json($res,200);
+//        return view('admin.project.create');
     }
 
 }
