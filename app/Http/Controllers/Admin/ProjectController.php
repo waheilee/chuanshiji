@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -19,8 +20,16 @@ class ProjectController extends Controller
         return view('admin.project.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
+
         return view('admin.project.create');
     }
+
+    public function update(Request $request)
+    {
+        dd($request->post());
+        return view('admin.project.create');
+    }
+
 }

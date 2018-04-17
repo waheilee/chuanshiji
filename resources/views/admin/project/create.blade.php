@@ -18,9 +18,9 @@
                     <div class="card-body">
                         <form action="">
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">标题</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="title" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
@@ -38,15 +38,54 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">content</label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">内容</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <textarea name="name" id=""  ></textarea>
+                                    <div id="ueditor" class="edui-default">
+                                        @include('UEditor::head')
+                                    </div>
                                 </div>
                             </div>
                         </form>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                            <div class="col-sm-12 col-md-7">
+                                <button class="btn btn-info" id="submit">提交</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+@endsection
+@section('admin-js')
+    <script id="ueditor"></script>
+    <script>
+        var ue=UE.getEditor("ueditor");
+        ue.ready(function(){
+            //因为Laravel有防csrf防伪造攻击的处理所以加上此行
+            ue.execCommand('serverparam','_token','{{ csrf_token() }}');
+        });
+    </script>
+    <script>
+        $("#submit").click(function(){
+            var con = $("form").serialize();
+            $.ajax({
+                type: 'POST',
+                url: 'update',
+                data: con,
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                },
+//                success: function(data){
+//                    console.log(data.status);
+//                }
+//                error: function(xhr, type){
+//                    alert('Ajax error!')
+//                }
+            });
+        });
+
+    </script>
 @endsection
