@@ -20,5 +20,5 @@ Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/project','Admin\ProjectController@index');
-Route::get('/project/create','Admin\ProjectController@create');
-Route::post('/project/update','Admin\ProjectController@update');
+Route::get('/project/create',function (){ return view('admin.project.create');});
+Route::post('/project/add','Admin\ProjectController@add');

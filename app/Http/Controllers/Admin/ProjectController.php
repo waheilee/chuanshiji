@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Project;
 class ProjectController extends Controller
 {
 
@@ -26,10 +26,13 @@ class ProjectController extends Controller
         return view('admin.project.create');
     }
 
-    public function update(Request $request)
+    public function add(Request $request)
     {
-        dd($request->post());
-        return view('admin.project.create');
+        $res = new Project();
+        $res->add($request);
+        if ($res){
+            return response(200);
+        }
     }
 
 }

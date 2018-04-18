@@ -20,7 +20,7 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">标题</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" name="title" class="form-control" id="title">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
@@ -28,7 +28,7 @@
                                 <div class="col-sm-12 col-md-7">
                                     <div class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
                                         <div class="selectric-hide-select">
-                                            <select class="form-control selectric" tabindex="-1">
+                                            <select class="form-control selectric" tabindex="-1" name="type">
                                                 <option>Tech</option>
                                                 <option>News</option>
                                                 <option>Political</option>
@@ -59,6 +59,7 @@
     </section>
 @endsection
 @section('admin-js')
+
     <script id="ueditor"></script>
     <script>
         var ue=UE.getEditor("ueditor");
@@ -69,23 +70,31 @@
     </script>
     <script>
         $("#submit").click(function(){
-            var con = $("form").serialize();
+            var con     = $("form").serialize();
+            var title   = $('#title').val();
+            var content = ue;
+//            alert(content)
+            if(title == ''){
+                toastr.warning('', '标题不能为空');
+                return false;
+            }
+            if(content == ''){
+                toastr.warning('', '内容不能为空');
+                return false;
+            }
             $.ajax({
                 type: 'POST',
-                url: 'update',
+                url: 'add',
                 data: con,
                 dataType: 'json',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 },
-//                success: function(data){
-//                    console.log(data.status);
-//                }
-//                error: function(xhr, type){
-//                    alert('Ajax error!')
-//                }
+                success: function(data){
+                    console.log(data.status);
+                    toastr.success('', '添加成功');
+                }
             });
         });
-
     </script>
 @endsection

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('distAdmin/modules/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('distAdmin/css/demo.css') }}">
     <link rel="stylesheet" href="{{ asset('distAdmin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('distAdmin/modules/toastr/build/toastr.css') }}">
 </head>
 <body>
 <a href="/" class="btn btn-default fa fa-home ">返回首页</a>
@@ -32,6 +33,8 @@
 <script src="{{ asset('distAdmin/js/scripts.js') }}"></script>
 <script src="{{ asset('distAdmin/js/custom.js') }}"></script>
 <script src="{{ asset('distAdmin/js/demo.js') }}"></script>
+<script src="{{ asset('distAdmin/modules/toastr/build/toastr.min.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @yield('admin-js')
 </body>
 </html>
