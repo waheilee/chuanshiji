@@ -23,6 +23,12 @@
 
                 <li class="menu-header">Components</li>
                 <li>
+                    <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>分类管理</span></a>
+                    <ul class="menu-dropdown">
+                        <li><a href="{{url('/tree')}}"><i class="ion ion-ios-circle-outline"></i>分类管理</a></li>
+                    </ul>
+                </li>
+                <li>
                     <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>项目路演</span></a>
                     <ul class="menu-dropdown">
                         <li><a href="{{url('/project')}}"><i class="ion ion-ios-circle-outline"></i>文章管理</a></li>
@@ -31,21 +37,21 @@
                 <li>
                     <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>会务安排</span></a>
                     <ul class="menu-dropdown">
-                        <li><a href="ion-icons.html"><i class="ion ion-ios-circle-outline"></i>文章管理</a></li>
+                        <li><a href="{{url('/meet')}}"><i class="ion ion-ios-circle-outline"></i>文章管理</a></li>
 
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>产品展示</span></a>
                     <ul class="menu-dropdown">
-                        <li><a href="ion-icons.html"><i class="ion ion-ios-circle-outline"></i>文章管理</a></li>
+                        <li><a href="{{url('/product')}}"><i class="ion ion-ios-circle-outline"></i>文章管理</a></li>
 
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>营销网络</span></a>
                     <ul class="menu-dropdown">
-                        <li><a href="ion-icons.html"><i class="ion ion-ios-circle-outline"></i>文章管理</a></li>
+                        <li><a href="{{url('/market')}}"><i class="ion ion-ios-circle-outline"></i>文章管理</a></li>
 
                     </ul>
                 </li>

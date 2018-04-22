@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class Project extends Model
+class Meet extends Model
 {
     protected $table = 'article';
     /**
@@ -26,7 +26,7 @@ class Project extends Model
 
     public function add(Request $request)
     {
-        $res = new Project();
+        $res = new Meet();
         $res->title = $request->title;
         $res->type  = $request->type;
         $res->content = $request->editorValue;
@@ -35,7 +35,7 @@ class Project extends Model
 
     public function del($id)
     {
-        $del = Project::find($id);
+        $del = Meet::find($id);
         $bool = $del->delete();
         if ($bool){
             return $bool;
@@ -44,7 +44,7 @@ class Project extends Model
 
     public function edit(Request $request)
     {
-        $fist = Project::find($request->id);
+        $fist = Meet::find($request->id);
         $fist->title = $request->title;
         $fist->type  = $request->type;
         $fist->content = $request->editorValue;

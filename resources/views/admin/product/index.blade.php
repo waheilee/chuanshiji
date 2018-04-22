@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-body">
-                            <a href="{{url('project/create')}}" class="btn btn-primary">添加</a>
+                            <a href="{{url('product/create')}}" class="btn btn-primary">添加</a>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered">
@@ -32,7 +32,7 @@
                                     <td>{{$vol->updated_at}}</td>
                                     {{--<td><div class="badge badge-success">Active</div></td>--}}
                                     <td><button class="btn btn-action btn-danger" onclick="del({{$vol->id}})">删除</button>
-                                        <a href="{{url('project/edit/'.$vol->id)}}" class="btn btn-action btn-secondary">编辑</a></td>
+                                        <a href="{{url('product/edit/'.$vol->id)}}" class="btn btn-action btn-secondary">编辑</a></td>
                                 </tr>
                                 @endforeach
                             </table>
@@ -67,7 +67,7 @@
                 .then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
-                        url:'project/del',
+                        url:'product/del',
                         type: 'POST',
                         dataType: 'json',
                         data: {'id':id},

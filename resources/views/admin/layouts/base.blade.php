@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
           name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ env('APP_NAME') }}</title>
 
     <link rel="stylesheet" href="{{ asset('distAdmin/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -14,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('distAdmin/modules/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('distAdmin/css/demo.css') }}">
     <link rel="stylesheet" href="{{ asset('distAdmin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('distAdmin/modules/toastr/build/toastr.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
+
 </head>
 <body>
 <a href="/" class="btn btn-default fa fa-home ">返回首页</a>
@@ -32,6 +37,12 @@
 <script src="{{ asset('distAdmin/js/scripts.js') }}"></script>
 <script src="{{ asset('distAdmin/js/custom.js') }}"></script>
 <script src="{{ asset('distAdmin/js/demo.js') }}"></script>
+<script src="{{ asset('distAdmin/modules/toastr/build/toastr.min.js') }}"></script>
+<!-- ueditor-mz 配置文件 -->
+<script type="text/javascript" src="{{asset('ueditor/ueditor.config.js')}}"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="{{asset('ueditor/ueditor.all.js')}}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @yield('admin-js')
 </body>
 </html>

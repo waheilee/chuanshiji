@@ -14,25 +14,25 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-body">
-                            <a href="{{url('project/create')}}" class="btn btn-primary">添加</a>
+                            <a href="{{url('tree/create')}}" class="btn btn-primary">添加</a>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <tr>
 
-                                    <th>文章标题</th>
-                                    <th>发布时间</th>
-                                    {{--<th>Status</th>--}}
-                                    <th>操作</th>
+                                    <th>Name</th>
+                                    <th>Created At</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
-                                @foreach($list as $vol)
+                                @foreach($data as $val)
                                 <tr>
-                                    {{--<td>{{$vol->id}}</td>--}}
-                                    <td>{{$vol->title}}</td>
-                                    <td>{{$vol->updated_at}}</td>
-                                    {{--<td><div class="badge badge-success">Active</div></td>--}}
-                                    <td><button class="btn btn-action btn-danger" onclick="del({{$vol->id}})">删除</button>
-                                        <a href="{{url('project/edit/'.$vol->id)}}" class="btn btn-action btn-secondary">编辑</a></td>
+                                    {{--<td>{{$bb->id}}</td>--}}
+                                    <td>{{$val->_name}}</td>
+                                    <td>{{$val->created_at}}</td>
+                                    <td><div class="badge badge-success">Active</div></td>
+                                    <td><button class="btn btn-action btn-danger" onclick="del({{$val->id}})">删除</button>
+                                        <a href="{{url('tree/edit/'.$val->id)}}" class="btn btn-action btn-secondary">编辑</a></td>
                                 </tr>
                                 @endforeach
                             </table>
@@ -41,11 +41,30 @@
                     {{--分页--}}
                     <div class="card-footer text-right">
                         <nav class="d-inline-block">
-                            {{ $list->links() }}
+                            <ul class="pagination mb-0">
+                                {{--{{ $aa->links() }}--}}
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1"><i class="ion ion-chevron-left"></i></a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="ion ion-chevron-right"></i></a>
+                                </li>
+
+                            </ul>
                         </nav>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 @endsection
@@ -67,7 +86,7 @@
                 .then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
-                        url:'project/del',
+                        url:'tree/del',
                         type: 'POST',
                         dataType: 'json',
                         data: {'id':id},

@@ -20,31 +20,30 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">标题</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" name="title" class="form-control" id="title" >
+                                    <input type="text" name="name" class="form-control" id="title" >
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">分类</label>
                                 <div class="col-sm-12 col-md-7">
                                     <div class="selectric-wrapper selectric-form-control selectric-selectric selectric-below">
                                         <div class="selectric-hide-select">
-                                            <select class="form-control selectric" tabindex="-1" name="type">
-                                                <option>Tech</option>
-                                                <option>News</option>
-                                                <option>Political</option>
+                                            <select class="form-control selectric" tabindex="-1" name="pid">
+                                                <option value="0">顶级分类</option>
+                                                @foreach($data as $val)
+                                                    <option value="{{$val->id}}">{{$val->_name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row mb-4">
-                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">内容</label>
-                                <div class="col-sm-12 col-md-7">
-                                    <script id="ue-container" name="editorValue"  type="text/plain">
-                                        {{--{!! html_entity_decode($con->content) !!}--}}
-                                    </script>
-                                </div>
-                            </div>
+                            {{--<div class="form-group row mb-4">--}}
+                                {{--<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">内容</label>--}}
+                                {{--<div class="col-sm-12 col-md-7">--}}
+
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </form>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
@@ -59,25 +58,13 @@
     </section>
 @endsection
 @section('admin-js')
-    <!-- 实例化编辑器 -->
-    <script type="text/javascript">
-        var ue = UE.getEditor('ue-container');
-        ue.ready(function(){
-            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
-        });
-    </script>
+
     <script>
         $("#submit").click(function(){
             var con     = $("form").serialize();
             var title   = $('#title').val();
-            var content = ue.getContent();
-//            alert(content)
             if(title == ''){
                 toastr.warning('', '标题不能为空');
-                return false;
-            }
-            if(content == ''){
-                toastr.warning('', '内容不能为空');
                 return false;
             }
             $.ajax({
@@ -89,7 +76,7 @@
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 },
                 success: function(data){
-                    console.log(data.status);
+                    // console.log(data.status);
                     toastr.success('', '添加成功');
                 }
             });

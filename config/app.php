@@ -176,10 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        /**
-         * 百度富文本编辑器
-         */
-        Stevenyangecho\UEditor\UEditorServiceProvider::class,
+
 
     ],
 
@@ -229,10 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        /**
-         * 百度富文本编辑器
-         */
-        'UEditor'=>Stevenyangecho\UEditor\UEditorServiceProvider::class
+
     ],
 
 ];
